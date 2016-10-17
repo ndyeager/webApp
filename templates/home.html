@@ -1,0 +1,36 @@
+<DOCTYPE! html>
+<html ng-app="webApp">
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+		<script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
+	</head>
+
+	<body>
+		<p><a href="/logout"> Logout</a></p>
+		<div ng-controller="comments">
+			<h3 class='test' ng-repeat="comment in comments">{{comment}}</h3>
+		</div>
+		<form action='/comment' method='Post'>
+			<label>Leave a Comment!</label>
+			<textarea name="comment">
+			</textarea>
+			<input type='submit' value="Leave Comment">
+		</form>
+		<script>
+		var app = angular.module('webApp',[]);
+
+		app.controller('comments', function($scope){
+			$scope.comments = [
+				"This is the first comment",
+				"This is the second comment",
+				"And the forth",
+				"Now the fith"
+			]
+		});
+
+		</script>
+
+	</body>
+</html>
